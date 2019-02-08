@@ -7,36 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CharityApplication.charityPages {
+namespace CharityApplication {
     
     
-    public partial class charityOverview {
+    public partial class CharityStoreActive {
         
         /// <summary>
-        /// userLoggedIn control.
+        /// GridViewCharity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal userLoggedIn;
+        protected global::System.Web.UI.WebControls.GridView GridViewCharity;
         
         /// <summary>
-        /// GridViewImage control.
+        /// SqlCharityStore control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewImage;
-        
-        /// <summary>
-        /// sqlImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sqlImage;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlCharityStore;
     }
 }

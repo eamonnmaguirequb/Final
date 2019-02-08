@@ -77,7 +77,9 @@
     <Content Include="App_Data\charitySQL_log.ldf">
       <DependentUpon>charitySQL.mdf</DependentUpon>
     </Content>
+    <Content Include="charityCalendar.aspx" />
     <Content Include="charityOverview.aspx" />
+    <Content Include="CharityStoreActive.aspx" />
     <Content Include="charityStoreCreation.aspx" />
     <Content Include="charityStoreOverview.aspx" />
     <Content Include="charityUserCreation.aspx" />
@@ -3423,12 +3425,26 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="charityCalendar.aspx.cs">
+      <DependentUpon>charityCalendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="charityCalendar.aspx.designer.cs">
+      <DependentUpon>charityCalendar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="charityOverview.aspx.cs">
       <DependentUpon>charityOverview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="charityOverview.aspx.designer.cs">
       <DependentUpon>charityOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CharityStoreActive.aspx.cs">
+      <DependentUpon>CharityStoreActive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CharityStoreActive.aspx.designer.cs">
+      <DependentUpon>CharityStoreActive.aspx</DependentUpon>
     </Compile>
     <Compile Include="charityStoreCreation.aspx.cs">
       <DependentUpon>charityStoreCreation.aspx</DependentUpon>
@@ -3467,6 +3483,11 @@
     </Compile>
     <Compile Include="Data.ashx.cs">
       <DependentUpon>Data.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="eventCalendar.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eventCalendar.dbml</DependentUpon>
     </Compile>
     <Compile Include="privateUserLanding.Master.cs">
       <DependentUpon>privateUserLanding.Master</DependentUpon>
@@ -3586,6 +3607,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data.ashx" />
+    <Content Include="eventCalendar.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>eventCalendar.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="eventCalendar.dbml.layout">
+      <DependentUpon>eventCalendar.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <Content Include="UserLogin.Master" />
     <Content Include="publicLanding.Master" />
@@ -3853,6 +3882,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="charityPages\" />
+    <Folder Include="dataGridView\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

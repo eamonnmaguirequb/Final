@@ -58,6 +58,8 @@ namespace CharityApplication
             context.Response.ContentType = "text/xml";
             context.Response.Write(new AjaxSaveResponse(action).ToString());
 
+        }
+
             
 
 
