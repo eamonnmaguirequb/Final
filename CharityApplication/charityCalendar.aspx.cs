@@ -9,17 +9,38 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using System.Text;
+using System.Web.UI.DataVisualization;
+using DHTMLX.Scheduler;
+using System.Web.Security;
+using System.Security.Cryptography;
 
 namespace CharityApplication
 {
     public partial class charityCalendar : System.Web.UI.Page
     {
+        public DHXScheduler Scheduler { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            this.Scheduler = new DHXScheduler();
+
+
+
+
+
+            Scheduler.Config.first_hour = 8;
+            Scheduler.Config.last_hour = 19;
+            Scheduler.Config.time_step = 30;
+            Scheduler.Config.limit_time_select = true;
+
+            Scheduler.DataAction = this.ResolveUrl("~/Data.ashx");
+            Scheduler.SaveAction = this.ResolveUrl("~/Save.ashx");
+            Scheduler.EnableDataprocessor = true;
+
+
             if (!Page.IsPostBack)
             {
-                string eventconn = ConfigurationManager.ConnectionStrings["charitySQL"].ConnectionString;
+                string eventconn = ConfigurationManager.ConnectionStrings["dbcon"].ConnectionString;
                 SqlConnection sqlconn = new SqlConnection(eventconn);
                 string sqlquery = "SELECT * FROM [User]";
                 SqlCommand sqlcomm = new SqlCommand(sqlquery, sqlconn);
@@ -28,47 +49,33 @@ namespace CharityApplication
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 StringBuilder sb = new StringBuilder();
-                sb.Append("<Center>");
-                sb.Append("<h1> how to bind shit</h1>");
-                sb.Append("<table border=1>");
+                sb.Append("<table>");
                 sb.Append("<tr>");
-                foreach(DataColumn dc in dt.Columns)
-                {
-                    sb.Append("<th>");
-                    sb.Append(dc.ColumnName.ToUpper());
-                    sb.Append("</th>");
-
-                }
+                for (int i = 0; i < dt.Columns.Count; i++)
+                    sb.Append("<td>" + dt.Columns[i].ColumnName + "</td>");
                 sb.Append("</tr>");
-                foreach (DataRow dr in dt.Rows)
-                {
-                    sb.Append("<th>");
-                    foreach (DataColumn dc in dt.Columns)
-                    {
-                        sb.Append("<th>");
-                        sb.Append(dr[dc.ColumnName].ToString());
-                        sb.Append("</th>");
 
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    sb.Append("<tr>");
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        sb.Append("<td>" + dt.Rows[i][j].ToString() + "</td>");
+                        sb.Append("</tr>");
                     }
-                    sb.Append("</th>");
+                    sb.Append("</table>");
+
                 }
-                sb.Append("</table>");
-                sb.Append("</center>");
-                Panel1.Controls.Add(new Label { Text = sb.ToString() });
+
+
+
             }
-      
+
+          
 
         }
-
-      
-
-
         public static string ConvertDataTableToHTML(DataTable dt)
-
         {
-       
-
-
             string html = "<table>";
             //add header row
             html += "<tr>";
@@ -87,4 +94,5 @@ namespace CharityApplication
             return html;
         }
     }
+
 }

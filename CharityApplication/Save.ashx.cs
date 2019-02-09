@@ -21,8 +21,7 @@ namespace CharityApplication
 
         public void ProcessRequest(HttpContext context)
         {
-            int userID = 0;
-            int eventid = 0;
+
             var action = new DataAction(context.Request.Form);
             var data = new SchedulerDataContext();
 

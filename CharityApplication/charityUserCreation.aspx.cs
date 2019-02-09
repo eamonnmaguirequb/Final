@@ -18,6 +18,8 @@ namespace CharityApplication.charityPages
         protected void Page_Load(object sender, EventArgs e)
         {
 
+                ViewState["RefUrl"] = Request.UrlReferrer.ToString();
+
         }
         public static string GetHash(string input)
         {
@@ -120,6 +122,13 @@ namespace CharityApplication.charityPages
 
 
             }
+        }
+
+        protected void Return_Button1(object sent, EventArgs e)
+        {
+            object refUrl = ViewState["RefUrl"];
+            if (refUrl != null)
+                Response.Redirect((string)refUrl);
         }
     }
 }

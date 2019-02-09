@@ -18,11 +18,11 @@ namespace CharityApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             this.Scheduler = new DHXScheduler();
-            
 
-            int userID = 0;
-            int eventid = 0;
-            
+
+ 
+
+            string user = Context.User.Identity.Name;
             
 
             Scheduler.Config.first_hour = 8;
@@ -32,8 +32,8 @@ namespace CharityApplication
 
 
 
-            Scheduler.DataAction = this.ResolveUrl("~/Data.ashx");
-            Scheduler.SaveAction = this.ResolveUrl("~/Save.ashx");
+            Scheduler.DataAction = this.ResolveUrl("~/Data.ashx?" + user);
+            Scheduler.SaveAction = this.ResolveUrl("~/Save.ashx" + user);
             Scheduler.EnableDataprocessor = true;
 
            

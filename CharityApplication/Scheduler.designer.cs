@@ -112,6 +112,8 @@ namespace CharityApplication
 		
 		private string _userID;
 		
+		private EntitySet<User> _Users;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -130,6 +132,7 @@ namespace CharityApplication
 		
 		public Event()
 		{
+			this._Users = new EntitySet<User>(new Action<User>(this.attach_Users), new Action<User>(this.detach_Users));
 			OnCreated();
 		}
 		
@@ -233,6 +236,19 @@ namespace CharityApplication
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Event_User", Storage="_Users", ThisKey="userID", OtherKey="userEmail")]
+		public EntitySet<User> Users
+		{
+			get
+			{
+				return this._Users;
+			}
+			set
+			{
+				this._Users.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -251,6 +267,18 @@ namespace CharityApplication
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Users(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.Event = this;
+		}
+		
+		private void detach_Users(User entity)
+		{
+			this.SendPropertyChanging();
+			entity.Event = null;
 		}
 	}
 	
@@ -284,6 +312,8 @@ namespace CharityApplication
 		
 		private System.Nullable<int> _charityUmbrella;
 		
+		private EntityRef<Event> _Event;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -316,6 +346,7 @@ namespace CharityApplication
 		
 		public User()
 		{
+			this._Event = default(EntityRef<Event>);
 			OnCreated();
 		}
 		
@@ -350,6 +381,10 @@ namespace CharityApplication
 			{
 				if ((this._userEmail != value))
 				{
+					if (this._Event.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnuserEmailChanging(value);
 					this.SendPropertyChanging();
 					this._userEmail = value;
@@ -555,6 +590,40 @@ namespace CharityApplication
 					this._charityUmbrella = value;
 					this.SendPropertyChanged("charityUmbrella");
 					this.OncharityUmbrellaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Event_User", Storage="_Event", ThisKey="userEmail", OtherKey="userID", IsForeignKey=true)]
+		public Event Event
+		{
+			get
+			{
+				return this._Event.Entity;
+			}
+			set
+			{
+				Event previousValue = this._Event.Entity;
+				if (((previousValue != value) 
+							|| (this._Event.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Event.Entity = null;
+						previousValue.Users.Remove(this);
+					}
+					this._Event.Entity = value;
+					if ((value != null))
+					{
+						value.Users.Add(this);
+						this._userEmail = value.userID;
+					}
+					else
+					{
+						this._userEmail = default(string);
+					}
+					this.SendPropertyChanged("Event");
 				}
 			}
 		}
