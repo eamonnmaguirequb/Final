@@ -7,7 +7,9 @@
 
         <div class="container-fluid">
 
-
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Welcome Back <asp:Literal ID="userLoggedIn" runat="server">Unknown</asp:Literal><asp:Literal ID="userLocation" runat="server">Unknown</asp:Literal></h1>
+          </div>
               <!-- Charity Information-->
 
        <main role="main" class="container">

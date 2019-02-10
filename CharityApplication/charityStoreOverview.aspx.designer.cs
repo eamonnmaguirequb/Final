@@ -13,6 +13,24 @@ namespace CharityApplication {
     public partial class charityStoreOverview {
         
         /// <summary>
+        /// userLoggedIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal userLoggedIn;
+        
+        /// <summary>
+        /// userLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal userLocation;
+        
+        /// <summary>
         /// GridViewImage control.
         /// </summary>
         /// <remarks>
