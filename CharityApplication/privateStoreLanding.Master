@@ -63,7 +63,7 @@
       <hr class="sidebar-divider d-none d-md-block">
 
         <li class="nav-item">
-        <a class="nav-link" href="charityStoreCreation.aspx">
+        <a class="nav-link" href="userEventCreation.aspx">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Create An Event</span></a>
       </li>

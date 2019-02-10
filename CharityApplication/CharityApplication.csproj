@@ -305,6 +305,7 @@
     <Content Include="Scripts\dhtmlxScheduler\locale\recurring\repeat_template_sk.html" />
     <Content Include="Styles\Site.css" />
     <Content Include="userCalendar.aspx" />
+    <Content Include="userEventCreation.aspx" />
     <Content Include="userOverview.aspx" />
     <Content Include="css\landing-page.css" />
     <Content Include="css\landing-page.min.css" />
@@ -3516,6 +3517,13 @@
     </Compile>
     <Compile Include="userCalendar.aspx.designer.cs">
       <DependentUpon>userCalendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="userEventCreation.aspx.cs">
+      <DependentUpon>userEventCreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userEventCreation.aspx.designer.cs">
+      <DependentUpon>userEventCreation.aspx</DependentUpon>
     </Compile>
     <Compile Include="userOverview.aspx.cs">
       <DependentUpon>userOverview.aspx</DependentUpon>
