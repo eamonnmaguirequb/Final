@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.DataVisualization;
 using System.Data.SqlClient;
+using System.Web.Script.Services;
+using System.Web.Services;
+using System.Configuration;
 
 namespace CharityApplication
 {
@@ -36,7 +39,7 @@ namespace CharityApplication
                 usercheckcon.Close();
             }
 
-            //string userName = Context.User.Identity.Name;
+
 
 
 
@@ -47,9 +50,40 @@ namespace CharityApplication
 
 
 
-
+            GetChartData();
 
             sqlImage.SelectParameters["charityStore"].DefaultValue = Context.User.Identity.Name;
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static object[] GetChartData()
+        {
+            List<GoogleChartData> data = new List<GoogleChartData>();
+            //Here MyDatabaseEntities  is our dbContext
+            using (charitySQLEntities1 dc = new charitySQLEntities1())
+            {
+                data = dc.GoogleChartDatas.ToList();
+            }
+
+            var chartData = new object[data.Count + 1];
+            chartData[0] = new object[]{
+                    "Product Category",
+                    "Revenue Amount"
+                };
+            int j = 0;
+            foreach (var i in data)
+            {
+                j++;
+                chartData[j] = new object[] { i.ProductCategory, i.RevenueAmount };
+            }
+
+            return chartData;
+        }
+
+        protected void Chart1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

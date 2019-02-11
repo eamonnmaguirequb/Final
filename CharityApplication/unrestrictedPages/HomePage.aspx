@@ -18,19 +18,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
-          <h1 class="mb-5">Build a landing page for your business or project and generate more leads!</h1>
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-              </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-              </div>
-            </div>
-          </form>
+          <h1 class="mb-5">Manage Your Events And View volunteering opportunities all in one place!</h1>
         </div>
       </div>
     </div>
@@ -46,7 +34,7 @@
               <i class="icon-screen-desktop m-auto text-primary"></i>
             </div>
             <h3>Fully Responsive</h3>
-            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+            <p class="lead mb-0">Event Management!</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -55,7 +43,7 @@
               <i class="icon-layers m-auto text-primary"></i>
             </div>
             <h3>Bootstrap 4 Ready</h3>
-            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+            <p class="lead mb-0">Apply To Charities</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -64,7 +52,7 @@
               <i class="icon-check m-auto text-primary"></i>
             </div>
             <h3>Easy to Use</h3>
-            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            <p class="lead mb-0">Manage Everything</p>
           </div>
         </div>
       </div>
